@@ -5,6 +5,7 @@ help:
 	@echo
 	@echo 'Targets:'
 	@echo '  boot         Create executable boot jar file.'
+	@echo '  cyg-boot     Create executable boot jar file for use under cygwin.'
 	@echo
 
 clean:
@@ -22,6 +23,14 @@ build: clean
 boot: build
 	echo '#!/usr/bin/env bash' > boot
 	echo 'java $$JVM_OPTS -jar $$0 "$$@"' >> boot
+	echo 'exit' >> boot
+	cat target/boot*-standalone.jar >> boot
+	chmod 0755 boot
+	@echo "*** Done. Created boot executable: ./boot ***"
+
+cyg-boot: build
+	echo '#!/usr/bin/env bash' > boot
+	echo 'java $$JVM_OPTS -jar $$(cygpath -w $$0) "$$@"' >> boot
 	echo 'exit' >> boot
 	cat target/boot*-standalone.jar >> boot
 	chmod 0755 boot
