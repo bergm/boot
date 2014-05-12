@@ -60,7 +60,27 @@ Any remaining forms in the script file are evaluated in the boot environment:
 
 ## Getting Started
 
-To build boot you will need:
+The easiest way to get started is to download the prebuilt Jar file. It's built
+to be executable in a Unix environment. In Windows you'll have to use it via
+`java -jar ...` unless you have Cygwin installed (I think).
+
+### Windows
+
+* [Download the boot Jar file.][8]
+* Use boot by doing `java -jar boot-X.Y.Z.jar ...`.
+
+### Unix
+
+```
+$ wget https://clojars.org/repo/tailrecursion/boot/1.0.3/boot-1.0.3.jar
+$ mv boot-1.0.3.jar boot 
+$ chmod a+x boot
+$ mv boot ~/bin/boot # or anywhere else in your $PATH
+```
+
+### Build From Source
+
+To build boot from source you will need:
 
 * Java 1.6+
 * [Leiningen][4] 2
@@ -69,7 +89,7 @@ To build boot you will need:
 Build and install boot:
 
 ```
-$ git clone git@github.com:tailrecursion/boot
+$ git clone https://github.com/tailrecursion/boot.git
 $ cd boot
 $ make boot
 $ mv ./boot ~/bin/boot # or anywhere else in your $PATH
@@ -626,6 +646,7 @@ Distributed under the Eclipse Public License, the same as Clojure.
 [5]: https://github.com/tailrecursion/boot.core/blob/master/src/tailrecursion/boot/core/task.clj
 [6]: https://github.com/tailrecursion/hoplon/blob/master/src/tailrecursion/hoplon/boot.clj
 [7]: https://raw.github.com/tailrecursion/boot/master/img/files.gif
+[8]: https://clojars.org/repo/tailrecursion/boot/1.0.3/boot-1.0.3.jar
 
 [10]: https://github.com/mmcgrana/ring
 [20]: https://github.com/tailrecursion/boot.task
