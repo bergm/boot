@@ -63,15 +63,15 @@
   (let [deps (mapv exclude-clj deps)]
     (aether/resolve-dependencies
       :coordinates        deps
-      :repositories       (zipmap repos repos)
+      :repositories       repos
       :transfer-listener  transfer-listener
       :proxy              (get-proxy-settings))))
 
 (defn resolve-dependencies!
   [deps repos]
   (->> (resolve-dependencies!* deps repos)
-    kahn/topo-sort
-    (map (fn [x] {:dep x :jar (.getPath (:file (meta x)))}))))
+       kahn/topo-sort
+       (map (fn [x] {:dep x :jar (.getPath (:file (meta x)))}))))
 
 (defn glob-match? [pattern path]
   (.match (AntPathMatcher.) pattern path))

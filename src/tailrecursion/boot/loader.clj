@@ -58,7 +58,8 @@
 ;; loader ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (def min-core-version "2.0.0")
-(def dfl-repos #{"http://clojars.org/repo/" "http://repo1.maven.org/maven2/"})
+(def dfl-repos {"clojars" "http://clojars.org/repo/"
+                "central" "http://repo1.maven.org/maven2/"})
 
 (def ^:private core-dep     (atom nil))
 (def ^:private cl2          (atom nil))
